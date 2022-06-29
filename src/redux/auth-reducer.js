@@ -45,10 +45,10 @@ export const login = (email, password, rememberMe) => (dispatch) => {
             if (response.data.resultCode === 0) {
                dispatch(getAuthUserData())
             } else {
-                let message = response.data.messages.length > 0 
-                ? response.data.messages[0] 
+                let message = response.data.messages.length > 0
+                ? response.data.messages[0]
                 : 'Some error';
-                
+
                 dispatch(stopSubmit('login', {_error: message}));
             }
         })
