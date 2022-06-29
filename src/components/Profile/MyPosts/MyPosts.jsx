@@ -23,6 +23,11 @@ const AddNewPostForm = (props) => {
 let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostForm);
 
 class MyPosts extends React.Component {
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextProps != this.props || nextState != this.state;
+    }
+
     render() {
         let postsElements =
             this.props.posts.map(p =>
