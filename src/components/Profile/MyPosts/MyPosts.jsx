@@ -22,28 +22,30 @@ const AddNewPostForm = (props) => {
 
 let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(AddNewPostForm);
 
-const MyPosts = (props) => {
-  let postsElements = 
-    props.posts.map( p => 
-      <Post message={p.message} like={p.likesCount} />);
+class MyPosts extends React.Component {
+    render() {
+        let postsElements =
+            this.props.posts.map(p =>
+                <Post message={p.message} like={p.likesCount}/>);
 
-  let newPostElement = React.createRef();
+        let newPostElement = React.createRef();
 
-  let onAddPost = (values) => {
-    props.addPost(values.newPostText);
-  }
+        let onAddPost = (values) => {
+            this.props.addPost(values.newPostText);
+        }
 
-  return (
-    <div className={classes.postsBlock}>
-      <h3>My posts</h3>
-      <div>
-        <AddNewPostFormRedux onSubmit={onAddPost} />
-      </div>
-      <div className={classes.posts}>
-        {postsElements}
-      </div>
-    </div>
-  )
+        return (
+            <div className={classes.postsBlock}>
+                <h3>My posts</h3>
+                <div>
+                    <AddNewPostFormRedux onSubmit={onAddPost}/>
+                </div>
+                <div className={classes.posts}>
+                    {postsElements}
+                </div>
+            </div>
+        )
+    }
 }
 
 const maxLength10 = maxLengthCreator(10);
