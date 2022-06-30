@@ -30,7 +30,7 @@ test('after deleting length of messages should be decremented', () => {
     expect(newState.posts.length).toBe(3);
 });
 
-test('after deleting length of messages shouldn`t be decremented if id incorrect',
+test('after deleting length of messages shouldn`t be decremented if id is incorrect',
     () => {
     let action = deletePost(1000);
     let newState = profileReducer(state, action);
