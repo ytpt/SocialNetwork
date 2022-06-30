@@ -15,5 +15,5 @@ test('length of posts should be incremented', () => {
     let newState = profileReducer(state, action);
 
     //3) Проверка ожиданий
-    expect(newState.post.length).toBe(5);
+    expect(newState.posts.length).toBe(5);
 });
