@@ -19,10 +19,7 @@ test('length of posts should be incremented', () => {
 });
 
 test('message of new post should be correct', () => {
-    //1) Готовим исходные данные
     let action = addPostActionCreator('Annarchive');
-    //2) Action
     let newState = profileReducer(state, action);
-    //3) Проверка ожиданий
     expect(newState.posts[4].message).toBe('Annarchive');
 });
