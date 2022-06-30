@@ -2,17 +2,16 @@ import './App.css';
 import React, {Component} from 'react';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import LoginPage from './login/Login';
-import {connect, Provider} from "react-redux";
+import { connect } from "react-redux";
 import { initializeApp } from "./redux/app-reducer";
 import { compose } from 'redux';
 import { withRouter } from './components/Profile/ProfileContainer';
 import Preloader from "./components/common/Preloader/Preloader";
-import store from "./redux/redux-store";
 
 class App extends Component {
 
@@ -25,26 +24,22 @@ class App extends Component {
             return <Preloader/>
         }
         return (
-            <BrowserRouter>
-                <Provider store={store}>
-                    <div className='app-wrapper'>
-                        <HeaderContainer/>
-                        <Navbar/>
-                        <div className='app-wrapper-content'>
-                            <Routes>
-                                <Route path='/dialogs/*' element={<DialogsContainer/>}/>
-                                <Route path='/profile/:userId' element={<ProfileContainer/>}/>
-                                <Route path='/profile/' element={<ProfileContainer/>}/>
-                                <Route path='/news/*'/>
-                                <Route path='/music/*'/>
-                                <Route path='/settings/*'/>
-                                <Route path='/users/*' element={<UsersContainer/>}/>
-                                <Route path='/login/*' element={<LoginPage/>}/>
-                            </Routes>
-                        </div>
-                    </div>
-                </Provider>
-            </BrowserRouter>
+            <div className='app-wrapper'>
+                <HeaderContainer/>
+                <Navbar/>
+                <div className='app-wrapper-content'>
+                    <Routes>
+                        <Route path='/dialogs/*' element={<DialogsContainer/>}/>
+                        <Route path='/profile/:userId' element={<ProfileContainer/>}/>
+                        <Route path='/profile/' element={<ProfileContainer/>}/>
+                        <Route path='/news/*'/>
+                        <Route path='/music/*'/>
+                        <Route path='/settings/*'/>
+                        <Route path='/users/*' element={<UsersContainer/>}/>
+                        <Route path='/login/*' element={<LoginPage/>}/>
+                    </Routes>
+                </div>
+            </div>
         )
     }
 }

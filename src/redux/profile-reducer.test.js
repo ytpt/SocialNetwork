@@ -23,3 +23,9 @@ test('message of new post should be correct', () => {
     let newState = profileReducer(state, action);
     expect(newState.posts[4].message).toBe('Annarchive');
 });
+
+test('after deleting length of messages should be decremented', () => {
+    let action = deletePost(1);
+    let newState = profileReducer(state, action);
+    expect(newState.posts.length).toBe(3);
+});
