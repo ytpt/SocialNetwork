@@ -95,15 +95,14 @@ export const requestUsers = (pageNumber, currentPage, pageSize) => {
 }
 
 export const follow = (userId) => {
-    
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));
-        usersAPI.follow(userId).then(response => {
-            if (response.data.resultCode == 0) {
-                dispatch(followSuccess(userId));
-            }
-            dispatch(toggleFollowingProgress(false, userId));
-        })  
+
+        let response = await usersAPI.follow(userId);
+        if (response.data.resultCode == 0) {
+            dispatch(followSuccess(userId));
+        }
+        dispatch(toggleFollowingProgress(false, userId));
     }
 }
 
