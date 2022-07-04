@@ -16,3 +16,27 @@
 .loginBlock a {
     color:#ff8066;
 }
+
+.loginBtn {
+    font-size: 18px;
+    line-height: 1.5rem;
+    padding: 0.25rem 2rem;
+    background: #ff8066;
+    color: #fff;
+    border-radius: 1.5rem;
+    letter-spacing: 0.3px;
+    font-weight: normal;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2186c4;
+    border-color: #2186c4;
+    color: #fff;
+}
+
+.myLogin {
+    color: #fff;
+}
