@@ -29,7 +29,7 @@ const LoginForm = (props) => {
                 {props.error}
             </div>}
             <div>
-                <button>Login</button>
+                <button className={classes.addBtn}>Login</button>
             </div>
         </form>
     )
