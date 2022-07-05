@@ -4,12 +4,12 @@ import userPhoto from '../assets/images/user.png'
 import { NavLink } from 'react-router-dom';
 import Paginator from "../components/common/Paginator/Paginator";
 
-let Users = (totalUsersCount, pageSize, currentPage, onPageChanged, ...props) => {
+let Users = (totalUsersCount, pageSize, currentPage, onPageChanged, users, ...props) => {
     return <div>
         <Paginator currentPage={currentPage} onPageChanged={onPageChanged}
                    totalUsersCount={totalUsersCount} pageSize={pageSize} />
     {
-        props.users.map(u => <div key={u.id}>
+        users.map(u => <div key={u.id}>
             <span>
                 <div>
                     <NavLink to={'/profile/' + u.id}>
