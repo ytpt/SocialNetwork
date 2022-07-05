@@ -3,14 +3,14 @@ import classes from './FormsControls.module.css';
 import {Field} from "redux-form";
 import {required} from "../../../utils/validators/validators";
 
-const FormControl = ({meta, input, element, ...props}) => {
-    const hasError = meta.touched && meta.error;
+const FormControl = ({meta: {touched, error}, input, element, ...props}) => {
+    const hasError = touched && error;
 
     return (
         <div>
             {React.createElement(element, {...input, ...props, 
                 className: hasError && classes.borderError}, null)}
-            {hasError && <span className={classes.error}>{meta.error}</span>}
+            {hasError && <span className={classes.error}>{error}</span>}
         </div>
     )
 }
