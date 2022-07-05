@@ -4,27 +4,17 @@ import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { login } from '../redux/auth-reducer';
 import { reduxForm, Field } from 'redux-form';
-import { Input } from '../components/common/FormsControls/FormsControls';
+import {createField, Input} from '../components/common/FormsControls/FormsControls';
 import classes from '../components/common/FormsControls/FormsControls.module.css';
 
 const LoginForm = ({handleSubmit, error}) => {
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <Field 
-                    placeholder={'Email'} name={'email'} 
-                    validate={[required]} component={Input} />
-            </div>
-            <div>
-                <Field 
-                    placeholder={'Password'} name={'password'} 
-                    validate={[required]} component={Input} type={'password'} />
-            </div>
-            <div>
-                <Field 
-                    type={'checkbox'} name={'rememberMe'} component={Input} />
-                    remember me
-            </div>
+            {createField('Email','email', [required], Input)}
+            {createField('Password','password', [required],
+                Input, {type: 'password'})}
+            {createField(null,'rememberMe',null, Input,
+                {type:'checkbox'}, 'remember me')}
             {error && <div className={classes.formSummaryError}>
                 {error}
             </div>}
