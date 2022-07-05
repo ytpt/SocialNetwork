@@ -7,9 +7,9 @@ import { reduxForm, Field } from 'redux-form';
 import { Input } from '../components/common/FormsControls/FormsControls';
 import classes from '../components/common/FormsControls/FormsControls.module.css';
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field 
                     placeholder={'Email'} name={'email'} 
@@ -25,8 +25,8 @@ const LoginForm = (props) => {
                     type={'checkbox'} name={'rememberMe'} component={Input} />
                     remember me
             </div>
-            {props.error && <div className={classes.formSummaryError}>
-                {props.error}
+            {error && <div className={classes.formSummaryError}>
+                {error}
             </div>}
             <div>
                 <button className={classes.addBtn}>Login</button>
