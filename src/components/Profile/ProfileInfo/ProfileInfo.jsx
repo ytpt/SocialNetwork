@@ -3,17 +3,15 @@ import classes from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}) => {
+  if (!profile) {
     return <Preloader />
   }
     return <div>
-      {/* { <div>
-        <img src='http://localhost:3000/img/background.jpg' width='100%' />
-      </div> } */}
       <div className={classes.descriptionBlock}>
-        <img src={props.profile.photos.large != null ? props.profile.photos.large : 'http://localhost:3000/img/user.png'} width='20%'/>
-        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
+        <img src={profile.photos.large != null
+            ? profile.photos.large : 'http://localhost:3000/img/user.png'} width='20%'/>
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
     </div> 
 } 
