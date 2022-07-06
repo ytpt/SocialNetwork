@@ -37,6 +37,6 @@ describe('ProfileStatus component', () => {
         let span = root.findByType('span');
         span.props.onDoubleClick();
         let input = root.findByType('input');
-        expect(input.props.vallue).toBe('it-kamasutra.com');
+        expect(input.props.value).toBe('it-kamasutra.com');
     })
 })
