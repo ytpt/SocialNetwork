@@ -9,9 +9,10 @@ describe('ProfileStatus component', () => {
         expect(instance.state.status).toBe('it-kamasutra.com');
     })
 
-    test('Status from props should be in the state', () => {
+    test('After creation span status should be displayed with correct status', () => {
         const button = create(<ProfileStatus  status='it-kamasutra.com'/>);
         const instance = component.getInstance();
-        expect(instance.state.status).toBe('it-kamasutra.com');
+        let span = instance.findByType('span');
+        expect(span.length).toBe(1);
     })
 })
