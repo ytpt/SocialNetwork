@@ -54,13 +54,11 @@ let AppContainer =  compose(
     connect(mapStateToProps,{initializeApp})) (App);
 
 const SamuraiJSApp = (props) => {
-    return (
-        <BrowserRouter>
+    return <BrowserRouter>
             <Provider store={store}>
                 <AppContainer />
             </Provider>
         </BrowserRouter>
-    )
 }
 
 export default SamuraiJSApp;
