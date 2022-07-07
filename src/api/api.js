@@ -1,5 +1,4 @@
 import * as axios from 'axios';
-import Login from '../login/Login';
 
 const instance = axios.create({
     withCredentials: true,
