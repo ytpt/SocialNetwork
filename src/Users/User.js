@@ -9,11 +9,11 @@ let User = ({user, followingInProgress, follow, unfollow }) => {
             <span>
                 <div>
                     <NavLink to={'/profile/' + user.id}>
-                        <img src={user.photos.small != null ? user.photos.small : userPhoto}
+                        <img alt={'photo of user'} src={user.photos.small != null ? user.photos.small : userPhoto}
                             className={styles.userPhoto} />
                     </NavLink>
                 </div>
-                <div>
+                <div className={styles.addBtn}>
                     {user.followed
                         ? <button disabled={followingInProgress
                             .some(id => id === user.id)}
