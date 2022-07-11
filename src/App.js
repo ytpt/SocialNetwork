@@ -2,7 +2,7 @@ import './App.css';
 import React, {Component, Suspense} from 'react';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import {Routes, Route, HashRouter} from 'react-router-dom';
 import UsersContainer from './Users/UsersContainer';
 import LoginPage from './login/Login';
 import {connect, Provider} from "react-redux";
@@ -67,11 +67,11 @@ let AppContainer =  compose(
     connect(mapStateToProps,{initializeApp})) (App);
 
 const SamuraiJSApp = (props) => {
-    return <BrowserRouter basename={process.env.PUBLIC_URL}>
+    return <HashRouter>
             <Provider store={store}>
                 <AppContainer />
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
 }
 
 export default SamuraiJSApp;
