@@ -18,9 +18,11 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
     return <div>
       <div className={classes.descriptionBlock}>
         <img src={profile.photos.large || userPhoto} className={classes.mainPhoto} />
-        {/*<img src={profile.photos.large != null*/}
-        {/*    ? profile.photos.large : 'http://localhost:3000/img/user.png'} width='20%'/>*/}
-        { isOwner && <input type={'file'} onChange={mainPhotoSelectedOn} />}
+        { isOwner &&
+          <label for="inputTag" className={classes.addBtn}> Change image
+            <input type={'file'} onChange={mainPhotoSelectedOn} />
+          </label>
+        }
         <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
     </div> 
