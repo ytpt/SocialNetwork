@@ -46,7 +46,7 @@ export const profileAPI = {
 // /*Дописала */.then(response => response.data)
     },
 
-    savephoto(photoFile) {
+    savePhoto(photoFile) {
         const formData = new FormData();
         formData.append('image', photoFile)
         return instance.put(`profile/photo`, formData, {
