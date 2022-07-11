@@ -11,6 +11,7 @@ import { compose } from 'redux';
 import { withRouter } from './components/Profile/ProfileContainer';
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
+import bgImg from '../src/assets/images/background.jpg'
 
 const DialogsContainer = React.lazy( () => import('./components/Dialogs/DialogsContainer'))
 const ProfileContainer = React.lazy( () => import('./components/Profile/ProfileContainer'))
@@ -30,6 +31,7 @@ class App extends Component {
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
+                    <img width={1000} src={bgImg} />
                         <Routes>
                             <Route path='/dialogs/*' element={
                                 <Suspense fallback={
