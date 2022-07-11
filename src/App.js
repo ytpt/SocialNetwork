@@ -1,5 +1,5 @@
 import './App.css';
-import React, {Component} from 'react';
+import React, {Component, Suspense} from 'react';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
 import {Routes, Route, BrowserRouter} from 'react-router-dom';
@@ -23,25 +23,35 @@ class App extends Component {
 
     render() {
         if (!this.props.initialized) {
-            return <Preloader/>
+            return <Preloader />
         }
         return (
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <Navbar/>
                 <div className='app-wrapper-content'>
-                    <React.Suspense fallback={<div><Preloader /></div>}>
                         <Routes>
-                            <Route path='/dialogs/*' element={<DialogsContainer/>}/>
-                            <Route path='/profile/:userId' element={<ProfileContainer/>}/>
-                            <Route path='/profile/' element={<ProfileContainer/>}/>
+                            <Route path='/dialogs/*' element={
+                                <Suspense fallback={
+                                    <div><Preloader /></div>}>
+                                    <DialogsContainer/>
+                                </Suspense>}/>
+                            <Route path='/profile/:userId' element={
+                                <Suspense fallback={
+                                    <div><Preloader /></div>}>
+                                    <ProfileContainer/>
+                                </Suspense>}/>
+                            <Route path='/profile/' element={
+                                <Suspense fallback={
+                                    <div><Preloader /></div>}>
+                                    <ProfileContainer/>
+                                </Suspense>}/>
                             <Route path='/news/*'/>
                             <Route path='/music/*'/>
                             <Route path='/settings/*'/>
                             <Route path='/users/*' element={<UsersContainer/>}/>
                             <Route path='/login/*' element={<LoginPage/>}/>
                         </Routes>
-                    </React.Suspense>
                 </div>
             </div>
         )
@@ -57,7 +67,7 @@ let AppContainer =  compose(
     connect(mapStateToProps,{initializeApp})) (App);
 
 const SamuraiJSApp = (props) => {
-    return <BrowserRouter>
+    return <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
                 <AppContainer />
             </Provider>
