@@ -18,12 +18,15 @@
     font-weight: 600;
     cursor: pointer;
     margin-left: 15px;
+    border: 2px solid black;
 }
 
 .addBtn:hover {
     background: #2186c4;
     border-color: #2186c4;
     color: #fff;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
 }
 
 input[type="file"] {
