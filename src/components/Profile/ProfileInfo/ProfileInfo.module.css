@@ -19,6 +19,7 @@
     cursor: pointer;
     margin-left: 15px;
     border: 2px solid black;
+    margin-top: 10px;
 }
 
 .addBtn:hover {
