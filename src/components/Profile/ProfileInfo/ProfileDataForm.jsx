@@ -1,20 +1,33 @@
 import React from "react";
+import classes from "./ProfileInfo.module.css";
+import {createField, Input, Textarea} from "../../common/FormsControls/FormsControls";
+import {reduxForm} from "redux-form";
 
-const ProfileDataForm = ({profile}) => {
+const ProfileDataForm = ({profile, handleSubmit}) => {
     return (
-        <div>Form</div>
-        // <div>
-        //   <div><b>Full name</b>: {profile.fullName}</div>
-        //   <div><b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}</div>
-        //   {profile.lookingForAJob &&
-        //   <div>
-        //     <b>My professional skills</b>: {profile.lookingForAJobDescription}
-        //   </div>
-        //   }
-        //   <div>
-        //     <b>About me</b>: {profile.aboutMe}
-        //   </div>
-        // </div>
+        <form onSubmit={handleSubmit}>
+            <div><b>Full name</b>:
+                {createField("Write your name", "fullName", [], Input)}
+            </div>
+            <div><b>Looking for a job</b>:
+                {createField("", "lookingForAJob", [], Input,
+                    {type: 'checkbox'})}
+            </div>
+            <div><b>My professional skills</b>:
+                {createField("Write your skills",
+                    "lookingForAJobDescription", [], Textarea)}
+            </div>
+            <div><b>About me</b>:
+                {createField("Write about yourself",
+                    "aboutMe", [], Textarea)}
+            </div>
+            <div>
+                <button className={classes.addBtn}>Save</button>
+            </div>
+        </form>
     )
 }
-export default ProfileDataForm;
+
+const ProfileDataFormReduxForm = reduxForm({form: 'edit-profile'})(ProfileDataForm)
+
+export default ProfileDataFormReduxForm;
