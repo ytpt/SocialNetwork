@@ -3,7 +3,7 @@ import classes from "./ProfileInfo.module.css";
 import {createField, Input, Textarea} from "../../common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
 
-const ProfileDataForm = ({profile, handleSubmit}) => {
+const ProfileDataForm = ({profile, handleSubmit, error}) => {
     return (
         <form onSubmit={handleSubmit}>
             <div><b>Full name</b>:
