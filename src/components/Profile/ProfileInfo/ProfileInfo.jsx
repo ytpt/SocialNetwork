@@ -5,7 +5,7 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from '../../../assets/images/user.png';
 import ProfileDataForm from "./ProfileDataForm";
 
-const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
 
   const [editMode, setEditMode] = useState(false);
 
@@ -20,7 +20,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
   }
 
   const onSubmit = (formData) => {
-      console.log(formData);
+      saveProfile(formData);
   }
 
     return <div>
