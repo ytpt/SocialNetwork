@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from '../../../assets/images/user.png';
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
+
+  const [editMode, setEditMode] = useState(false);
+
   if (!profile) {
     return <Preloader />
   }
@@ -23,15 +26,19 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
             <input type={'file'} onChange={mainPhotoSelectedOn} />
           </label>
         }
-        <ProfileData profile={profile} />
+        { editMode
+            ? <ProfileDataForm profile={profile} />
+            : <ProfileData profile={profile} isOwner={isOwner}
+                           goToEditMode={ () => {setEditMode(true)}} /> }
         <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
     </div> 
 }
 
-const ProfileData = ({profile}) => {
+const ProfileData = ({profile, isOwner, goToEditMode}) => {
   return (
       <div>
+        { isOwner && <div><button onClick={goToEditMode}>Edit</button></div> }
         <div><b>Full name</b>: {profile.fullName}</div>
         <div><b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}</div>
         {profile.lookingForAJob &&
@@ -43,6 +50,24 @@ const ProfileData = ({profile}) => {
           <b>About me</b>: {profile.aboutMe}
         </div>
       </div>
+  )
+}
+
+const ProfileDataForm = ({profile}) => {
+  return (
+      <div>Form</div>
+      // <div>
+      //   <div><b>Full name</b>: {profile.fullName}</div>
+      //   <div><b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}</div>
+      //   {profile.lookingForAJob &&
+      //   <div>
+      //     <b>My professional skills</b>: {profile.lookingForAJobDescription}
+      //   </div>
+      //   }
+      //   <div>
+      //     <b>About me</b>: {profile.aboutMe}
+      //   </div>
+      // </div>
   )
 }
 
