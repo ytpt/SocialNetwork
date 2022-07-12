@@ -33,7 +33,7 @@ const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
         }
         <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
         { editMode
-            ? <ProfileDataForm profile={profile} onSubmit={onSubmit} />
+            ? <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit} />
             : <ProfileData profile={profile} isOwner={isOwner}
                            goToEditMode={ () => {setEditMode(true)}} /> }
       </div>
