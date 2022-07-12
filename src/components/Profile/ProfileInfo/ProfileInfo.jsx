@@ -3,6 +3,7 @@ import classes from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import userPhoto from '../../../assets/images/user.png';
+import ProfileDataForm from "./ProfileDataForm";
 
 const ProfileInfo = ({profile, status, updateStatus, isOwner, savePhoto}) => {
 
@@ -50,24 +51,6 @@ const ProfileData = ({profile, isOwner, goToEditMode}) => {
           <b>About me</b>: {profile.aboutMe}
         </div>
       </div>
-  )
-}
-
-const ProfileDataForm = ({profile}) => {
-  return (
-      <div>Form</div>
-      // <div>
-      //   <div><b>Full name</b>: {profile.fullName}</div>
-      //   <div><b>Looking for a job</b>: {profile.lookingForAJob ? 'yes' : 'no'}</div>
-      //   {profile.lookingForAJob &&
-      //   <div>
-      //     <b>My professional skills</b>: {profile.lookingForAJobDescription}
-      //   </div>
-      //   }
-      //   <div>
-      //     <b>About me</b>: {profile.aboutMe}
-      //   </div>
-      // </div>
   )
 }
 
