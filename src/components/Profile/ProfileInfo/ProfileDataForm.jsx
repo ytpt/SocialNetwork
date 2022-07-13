@@ -22,12 +22,15 @@ const ProfileDataForm = ({profile, handleSubmit, error}) => {
                     "aboutMe", [], Textarea)}
             </div>
             <div><b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
-                return <div>
+                return <div key={key}>
                 <b>{key}: {createField(key, "contacts." + key, [], Input)}</b>
                 </div>
             })}
             </div>
             <div><button className={classes.addBtn}>Save</button></div>
+            {error && <div className={classes.formSummaryError}>
+                {error}
+            </div>}
         </form>
     )
 }

@@ -38,3 +38,20 @@ input[type="file"] {
     display: flex;
     flex-direction: column-reverse;
 }
+
+.borderError {
+    border: 1px red solid;
+}
+
+.error {
+    color: #ff0000;
+    padding-left: 5px;
+}
+
+.formSummaryError {
+    margin-top: 10px;
+    width: 300px;
+    border: 1px red solid;
+    padding: 5px;
+    color: red;
+}
