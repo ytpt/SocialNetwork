@@ -16,6 +16,7 @@ const authReducer = (state = initialState, action) => {
     
     switch(action.type) {
         case SET_USER_DATA:
+        case GET_CAPTCHA_URL_SUCCESS:
             return {
                 ...state, 
                 ...action.payload
