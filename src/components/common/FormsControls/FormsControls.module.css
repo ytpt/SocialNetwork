@@ -8,7 +8,7 @@
 }
 
 .formSummaryError {
-    width: 65px;
+    width: 200px;
     border: 1px red solid;
     padding: 5px;
     color: red;
@@ -33,4 +33,8 @@ button:hover {
     background: #2186c4;
     border-color: #2186c4;
     color: #fff;
+}
+
+.loginForm, h1 {
+    margin-left: 10px;
 }

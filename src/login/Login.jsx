@@ -9,7 +9,7 @@ import classes from '../components/common/FormsControls/FormsControls.module.css
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={classes.loginForm}>
             {createField('Email','email', [required], Input)}
             {createField('Password','password', [required],
                 Input, {type: 'password'})}
