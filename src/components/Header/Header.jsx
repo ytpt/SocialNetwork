@@ -13,7 +13,9 @@ const Header = (props) => {
                     className={classes.loginBtn}>Logout
                     </button>
                 </div>
-                : <NavLink to={'/login/*'}>Login</NavLink> }
+                : <NavLink to={'/login/*'}>
+                    <button className={classes.loginBtn}>Login</button>
+                </NavLink> }
         </div>
     </header>
 }
