@@ -7,7 +7,7 @@ import { reduxForm, Field } from 'redux-form';
 import {createField, Input} from '../components/common/FormsControls/FormsControls';
 import classes from '../components/common/FormsControls/FormsControls.module.css';
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit}>
             {createField('Email','email', [required], Input)}
@@ -15,6 +15,9 @@ const LoginForm = ({handleSubmit, error}) => {
                 Input, {type: 'password'})}
             {createField(null,'rememberMe',null, Input,
                 {type:'checkbox'}, 'remember me')}
+
+            {captchaUrl && <img src={captchaUrl} />}
+
             {error && <div className={classes.formSummaryError}>
                 {error}
             </div>}
@@ -39,12 +42,13 @@ const LoginComponent = (props) => {
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit} />
+            <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl} />
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
+    captchaUrl: state.auth.captchaUrl,
     isAuth: state.auth.isAuth
 })
 
