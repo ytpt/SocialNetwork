@@ -2,7 +2,7 @@ import './App.css';
 import React, {Component, Suspense} from 'react';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
 import UsersContainer from './Users/UsersContainer';
 import LoginPage from './login/Login';
 import {connect, Provider} from "react-redux";
@@ -33,11 +33,7 @@ class App extends Component {
                 <div className='app-wrapper-content'>
                     <img width={1000} src={bgImg} />
                         <Routes>
-                            <Route exact path='/' element={
-                                <Suspense fallback={
-                                    <div><Preloader /></div>}>
-                                    <ProfileContainer />
-                                </Suspense>} />
+                            <Route exact path='/' element={<Navigate to='/profile' />} />
                             <Route path='/dialogs/*' element={
                                 <Suspense fallback={
                                     <div><Preloader /></div>}>
