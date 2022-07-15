@@ -17,9 +17,17 @@ const DialogsContainer = React.lazy( () => import('./components/Dialogs/DialogsC
 const ProfileContainer = React.lazy( () => import('./components/Profile/ProfileContainer'))
 
 class App extends Component {
+    catchAllUnhandledErrors = (reason, promise) => {
+        alert('Some error occurred');
+    }
 
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors);
     }
 
     render() {
