@@ -33,21 +33,26 @@ class App extends Component {
                 <div className='app-wrapper-content'>
                     <img width={1000} src={bgImg} />
                         <Routes>
+                            <Route exact path='/' element={
+                                <Suspense fallback={
+                                    <div><Preloader /></div>}>
+                                    <ProfileContainer />
+                                </Suspense>} />
                             <Route path='/dialogs/*' element={
                                 <Suspense fallback={
                                     <div><Preloader /></div>}>
-                                    <DialogsContainer/>
-                                </Suspense>}/>
+                                    <DialogsContainer />
+                                </Suspense>} />
                             <Route path='/profile/:userId' element={
                                 <Suspense fallback={
                                     <div><Preloader /></div>}>
-                                    <ProfileContainer/>
-                                </Suspense>}/>
+                                    <ProfileContainer />
+                                </Suspense>} />
                             <Route path='/profile/' element={
                                 <Suspense fallback={
                                     <div><Preloader /></div>}>
-                                    <ProfileContainer/>
-                                </Suspense>}/>
+                                    <ProfileContainer />
+                                </Suspense>} />
                             <Route path='/news/*'/>
                             <Route path='/music/*'/>
                             <Route path='/settings/*'/>
